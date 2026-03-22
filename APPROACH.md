@@ -120,7 +120,7 @@ look for:
 ...
 
 ## 5. AI Usage Log
-> Public links of conversations you had with AI.
+> Public links : https://drive.google.com/file/d/1ZzUtCvM5iQJAW032oKk6Tzqrk8k8wvu6/view?usp=sharing
 
 ## 6. Weaknesses & Future Improvements
 >Bulk Job Latency
