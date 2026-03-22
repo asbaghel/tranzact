@@ -17,14 +17,15 @@ The challenging part was handling the memory and cost both at the same time.
 requirements?
 > Consider: memory, CPU, storage, network bandwidth, queue depth.
 
-Parameter	Value
-PDFs/month	30,000
-PDFs/day	1,000
-Peak single requests	1000/min
-Bulk requests	5–10/min
-PDFs per bulk	up to 100
-Time per PDF	2–3 sec (avg = 2.5 sec)
-Memory per PDF	~400 MB
+| Parameter               | Value                |
+|-------------------------|--------------------|
+| PDFs/month              | 30,000             |
+| PDFs/day                | 1,000              |
+| Peak single requests    | 1000/min           |
+| Bulk requests           | 5–10/min           |
+| PDFs per bulk           | Up to 100          |
+| Time per PDF            | 2–3 sec (avg = 2.5 sec) |
+| Memory per PDF          | ~400 MB            |
 
 - Average Load
 
@@ -66,12 +67,13 @@ Each PDF:
 For 10 concurrent PDFs:
 ~5–10 vCPU total , 3 x t3.large = 6vCPU
 
-Storage Calculation
-500 KB per PDF (avg)
-Monthly Storage:
-30,000 × 500 KB ≈ 15 GB
-With ZIPs + overhead: 0–25 GB/month
-Cost (S3):  ~$0.023/GB → ~$1/month
+| Parameter                | Value                         |
+|--------------------------|-------------------------------|
+| Average PDF size         | 500 KB                        |
+| Monthly PDFs             | 30,000                        |
+| Monthly storage          | 30,000 × 500 KB ≈ 15 GB       |
+| With ZIPs + overhead     | 0–25 GB/month                 |
+| Storage cost (S3)        | ~$0.023/GB → ~$1/month        |
 
 
 Queue Depth
@@ -168,13 +170,13 @@ At 60% utilization (Safe limit to avoid OOM) 1 instance can handle 3-4 PDF concu
 
 10/3 = ~3 instance
 
-Storage Calculation
-
-500 KB per PDF (avg)
-Monthly Storage:
-30,000 × 500 KB ≈ 15 GB
-With ZIPs + overhead: 0–25 GB/month
-Cost (S3):  ~$0.023/GB → ~$1/month
+| Parameter                | Value                         |
+|--------------------------|-------------------------------|
+| Average PDF size         | 500 KB                        |
+| Monthly PDFs             | 30,000                        |
+| Monthly storage          | 30,000 × 500 KB ≈ 15 GB       |
+| With ZIPs + overhead     | 0–25 GB/month                 |
+| Storage cost (S3)        | ~$0.023/GB → ~$1/month        |
 
 Redis 
 Each job entry: ~1–2 KB (job ID, status, timestamps)
@@ -184,10 +186,11 @@ Bulk PDF jobs
 10 bulk jobs at peak × 100 PDFs × 50 bytes = 50 KB
 cache.t3.micro: 0.5 GB RAM → ~$16–20/month
 
-Component	Qty	Cost
-Worker (t3.large, 8GB)	3	~$120
-Redis (small)	1	~$16
-S3 Storage	20GB	~$1-2
-Queue (SQS)	-	<$1
+| Component             | Qty        | Cost        |
+|-----------------------|-----------|------------|
+| Worker (t3.large, 8GB)| 3         | ~$120      |
+| Redis (small)         | 1         | ~$16       |
+| S3 Storage            | 20 GB     | ~$1–2      |
+| Queue (SQS)           | -         | <$1        |
 
 Total: $137/month ✅ within budget
