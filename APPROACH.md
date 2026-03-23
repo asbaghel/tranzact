@@ -123,6 +123,7 @@ look for:
 
 ## 5. AI Usage Log
 > Public links : https://drive.google.com/file/d/1ZzUtCvM5iQJAW032oKk6Tzqrk8k8wvu6/view?usp=sharing
+> Chat link: https://chatgpt.com/share/69c0e2df-f218-8004-b95b-9dd3fc978df0
 
 ## 6. Weaknesses & Future Improvements
 >Bulk Job Latency
